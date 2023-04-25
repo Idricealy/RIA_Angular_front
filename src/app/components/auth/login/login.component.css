@@ -1,0 +1,7 @@
+.mainApp {
+  display: flex;
+  border: solid black 2px;
+  margin: auto;
+  width: 50%;
+  flex-direction: column;
+}

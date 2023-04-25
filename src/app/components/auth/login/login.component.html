@@ -1,11 +1,15 @@
-<form (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="email">Adresse Email</label>
-    <input type="email" class="form-control" id="email" placeholder="example@gmail.com">
-  </div>
-  <div class="form-group">
-    <label for="password">Mot de passe</label>
-    <input type="password" class="form-control" id="password" placeholder="*********">
-  </div>
-  <button type="submit" class="btn btn-primary">Connexion</button>
-</form>
+<div class="mainApp">
+  <h1>Universita Corsica ENT</h1>
+  <form (ngSubmit)="onSubmit()" >
+    <div class="form-group">
+      <label for="email">Adresse Email</label>
+      <input type="email" class="form-control" id="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="email" placeholder="example@gmail.com" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input type="password" class="form-control" id="password" [ngModelOptions]="{standalone: true}" [(ngModel)]="password" placeholder="*********" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Connexion</button>
+  </form>
+</div>
+
