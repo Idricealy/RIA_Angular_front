@@ -13,6 +13,8 @@ import { PortalComponent } from './components/portal/portal/portal.component';
 import { EnseignantComponent } from './components/portal/portal/enseignant/enseignant.component';
 import { AdminComponent } from './components/portal/portal/admin/admin.component';
 import { StudentComponent } from './components/portal/portal/student/student.component';
+import { EdtComponent } from './components/portal/portal/enseignant/edt/edt.component';
+import { CoursComponent } from './components/portal/portal/enseignant/cours/cours.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { StudentComponent } from './components/portal/portal/student/student.com
     PortalComponent,
     EnseignantComponent,
     AdminComponent,
-    StudentComponent
+    StudentComponent,
+    EdtComponent,
+    CoursComponent
   ],
   imports: [
     BrowserModule,
