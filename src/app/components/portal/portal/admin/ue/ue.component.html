@@ -1,0 +1,44 @@
+<h2>Unité d'enseignement</h2>
+<hr>
+
+<button
+  type="button"
+  class="btn btn-secondary"
+  (click)="addNewUe()">
+  Créer un nouvel Unité d'enseignement
+</button>
+
+<div id="accordion">
+  <div class="card"  *ngFor="let ue of ues">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <span>&#x2794;</span>
+        <button class="btn btn-link"
+                (click)="ue.isCollapsed = !ue.isCollapsed"
+                aria-expanded="false"
+                aria-controls="collapseOne"
+        >
+          Unité d'enseignement : {{ ue.nom_ue }}
+        </button>
+        <i class="bi bi-x-circle" (click)="onDelete(ue)" ></i>
+      </h5>
+    </div>
+
+    <div id="{{ue.id}}" [ngbCollapse]="ue.isCollapsed" aria-labelledby="headingOne" class="collapse" [@collapseAnimation]="ue.isCollapsed ? 'collapsed' : 'expanded'">
+      <div class="card-body">
+        <div class="card-btn">
+
+          <div class="mainCourseCard">
+            <p>Description : {{ ue.description }}</p>
+            <p>Unité d'enseignement {{ ue.nom_ue}}</p>
+            <p>Filiere {{ ue.filiere }}</p>
+            <p>Niveau : {{ ue.niveau }}</p>
+          </div>
+
+          <p>Cours de cette unité d'enseignement : </p>
+          <p *ngFor="let course of ue.cours"><span>&#x2794;</span>{{ course.nom_cours }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

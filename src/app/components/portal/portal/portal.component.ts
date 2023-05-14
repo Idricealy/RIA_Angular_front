@@ -11,8 +11,14 @@ export class PortalComponent implements OnInit{
   constructor(private router: Router  ) {}
   ngOnInit(): void {
     if(window.localStorage.getItem('user') !== null) {
-      // @ts-ignore
-      this.portal = window.localStorage.getItem('user');
+
+      if(window.localStorage.getItem('role') == 'admin') {
+        this.portal = 'directeur'
+      } else {
+        // @ts-ignore
+        this.portal = window.localStorage.getItem('user');
+      }
+
     } else {
       this.router.navigate([`/`]);
     }

@@ -1,0 +1,44 @@
+<h2>Filiere</h2>
+<hr>
+
+<button
+  type="button"
+  class="btn btn-secondary"
+  (click)="addNewFiliere()">
+  Créer une nouvelle filière
+</button>
+
+<div id="accordion">
+  <div class="card"  *ngFor="let filiere of filieres">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <span>&#x2794;</span>
+        <button class="btn btn-link"
+                (click)="filiere.isCollapsed = !filiere.isCollapsed"
+                aria-expanded="false"
+                aria-controls="collapseOne"
+        >
+          Filière : {{ filiere.nom_filiere }}
+        </button>
+        <i class="bi bi-pen" (click)="onEdit(filiere)"></i>
+        <i class="bi bi-x-circle" (click)="onDelete(filiere)" ></i>
+      </h5>
+    </div>
+
+    <div id="{{filiere.id}}" [ngbCollapse]="filiere.isCollapsed" aria-labelledby="headingOne" class="collapse" [@collapseAnimation]="filiere.isCollapsed ? 'collapsed' : 'expanded'">
+      <div class="card-body">
+        <div class="card-btn">
+
+        <div class="mainCourseCard">
+          <p>Description : {{ filiere.description }}</p>
+          <p>Nombres d'année de formation : {{ filiere.nb_annees}}</p>
+          <p>Responsable de formation : {{ filiere.responsable_filiere }}</p>
+          <p>Contact : {{ filiere.contact_responsable }}</p>
+          <p>Role responsable de formation: {{ filiere.role_responsable }}</p>
+          <p>Niveau : {{ filiere.niveau }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

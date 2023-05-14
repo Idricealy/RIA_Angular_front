@@ -1,0 +1,44 @@
+<div >
+  <div class="modal-content">
+    <div class="modal-header" *ngIf="!edit, else elseBlock">
+      <h5 class="modal-title" id="studentsModalLabel">Ajouter une nouvelle filiere</h5>
+    </div>
+    <ng-template #elseBlock>
+      <div class="modal-header">
+        <h5 class="modal-title">Modifier une filière</h5>
+      </div>
+      <h5 class="modal-title"></h5>
+    </ng-template>
+    <div class="modal-body">
+      <form (ngSubmit)="!edit ? onSubmit() : onEdit()">
+        <div class="form-group">
+          <label for="nom">Nom de la filière</label>
+          <input type="text" class="form-control" name="nom" id="nom" [(ngModel)]="nom_filiere" required>
+        </div>
+        <div class="form-group" >
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" name="descrip" [(ngModel)]="description" required>
+        </div>
+        <div class="form-group" >
+          <label for="niveau">Niveau</label>
+          <input type="text" class="form-control" id="niveau" name="niveau" [(ngModel)]="niveau" required>
+        </div>
+        <div class="form-group" >
+          <label for="niveau">Nombres d'années de formation</label>
+          <input type="number" class="form-control" id="nb_annee" name="nbannee" [(ngModel)]="nb_annees" required>
+        </div>
+        <div class="form-group" >
+          <label for="contact">Contact</label>
+          <input type="text" class="form-control" id="contact" name="contact" [(ngModel)]="contact_responsable" required>
+        </div>
+        <button type="submit" class="btn btn-primary" *ngIf="!edit, else elseBlockBtn">Ajouter une nouvelle filière</button>
+        <ng-template #elseBlockBtn>
+          <button type="submit" class="btn btn-primary">Modifier une filière</button>
+        </ng-template>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Fermer</button>
+    </div>
+  </div>
+</div>

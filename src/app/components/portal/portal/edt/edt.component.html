@@ -1,0 +1,39 @@
+<ejs-schedule width='100%'
+              [selectedDate]="selectedDate"
+              [eventSettings]='eventSettings'
+              (popupOpen)="onPopupOpen($event)"
+              (actionBegin)="onActionBegin($event)"
+              (actionComplete)="onActionComplete($event)"
+              (close)="resetForm()">
+  <e-views>
+    <e-view
+      option='Week'
+      startHour='8:00'
+      endHour='19:00'
+      [showWeekend]="false"
+      [readonly]="readonly"
+    ></e-view>
+  </e-views>/
+  <ng-template #editorTemplate>
+    <div class="custom-input-container">
+      <label>Cours :</label>
+      <input disabled="{{!isCreate}}" type="text" [(ngModel)]="eventForm.value.Subject"  required/>
+      <label *ngIf="isCreate">Unité d'enseignemant :</label>
+      <input *ngIf="isCreate"type="text" [(ngModel)]="eventForm.value.Ue"  required/>
+      <label>Date de début :</label>
+      <input type="date" [(ngModel)]="eventForm.value.StartDate" required />
+      <label>Heure de début :</label>
+      <input type="time" [(ngModel)]="eventForm.value.StartTime" required />
+      <label>Date de fin :</label>
+      <input type="date" [(ngModel)]="eventForm.value.EndDate" required/>
+      <label>Heure de fin :</label>
+      <input type="time" [(ngModel)]="eventForm.value.EndTime" required/>
+      <label>Filire :</label>
+      <input type="text"[(ngModel)]="eventForm.value.filiere" required/>
+      <label>Niveau :</label>
+      <input type="text"[(ngModel)]="eventForm.value.niveau" required/>
+      <label>Type de cours :</label>
+      <input type="text"[(ngModel)]="eventForm.value.type" required/>
+    </div>
+  </ng-template>
+</ejs-schedule>

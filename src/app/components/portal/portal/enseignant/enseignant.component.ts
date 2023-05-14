@@ -7,7 +7,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class EnseignantComponent implements OnInit{
   selectedTab: string | undefined;
+  userName : string | undefined ;
   ngOnInit(): void {
+    // @ts-ignore
+    this.userName = localStorage.getItem("fullName")
+    this.selectedTab = 'cours'
   }
 
   constructor() {
@@ -16,11 +20,6 @@ export class EnseignantComponent implements OnInit{
   onClick(tab : String) {
     // @ts-ignore
     this.selectedTab = tab
-    console.log(this.selectedTab);
-  }
-
-  logout() {
-
   }
 
 }

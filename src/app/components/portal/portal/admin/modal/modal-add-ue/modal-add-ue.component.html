@@ -1,0 +1,39 @@
+<div >
+  <div class="modal-content">
+    <div class="modal-header" *ngIf="!edit, else elseBlock">
+      <h5 class="modal-title" id="studentsModalLabel">Ajouter un nouvel Unité d'enseignement</h5>
+    </div>
+    <ng-template #elseBlock>
+      <div class="modal-header">
+        <h5 class="modal-title">Modifier un nouvel Unité d'enseignement</h5>
+      </div>
+    </ng-template>
+    <div class="modal-body">
+      <form (ngSubmit)="!edit ? onSubmit() : onEdit()">
+        <div class="form-group" >
+          <label for="nom_ue">Nom de l'unité d'enseignement</label>
+          <input type="text" class="form-control" id="nom_ue" name="nom_ue" [(ngModel)]="nom_ue" required>
+        </div>
+        <div class="form-group" *ngIf="!edit">
+          <label for="nom">Nom de la filière</label>
+          <input type="text" class="form-control" name="nom" id="nom" [(ngModel)]="nom_filiere" required>
+        </div>
+        <div class="form-group" >
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" name="descrip" [(ngModel)]="description" required>
+        </div>
+        <div class="form-group" *ngIf="!edit">
+          <label for="niveau">Niveau</label>
+          <input type="text" class="form-control" id="niveau" name="niveau" [(ngModel)]="niveau" required>
+        </div>
+        <button type="submit" class="btn btn-primary" *ngIf="!edit, else elseBlockBtn">Ajouter un nouvel Unité d'enseignement</button>
+        <ng-template #elseBlockBtn>
+          <button type="submit" class="btn btn-primary">Modifier un unité d'enseignement</button>
+        </ng-template>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Fermer</button>
+    </div>
+  </div>
+</div>

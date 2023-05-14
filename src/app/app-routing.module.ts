@@ -4,6 +4,7 @@ import {LoginComponent} from "./components/auth/login/login.component";
 import {EnseignantComponent} from "./components/portal/portal/enseignant/enseignant.component";
 import {PortalComponent} from "./components/portal/portal/portal.component";
 import {AdminComponent} from "./components/portal/portal/admin/admin.component";
+import {LogoutComponent} from "./components/auth/logout/logout.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -12,6 +13,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [
+    LogoutComponent
+  ],
+  exports: [RouterModule, LogoutComponent]
 })
 export class AppRoutingModule { }

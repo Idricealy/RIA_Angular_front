@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Login} from "../../../model/Login";
 import {LoginService} from "../../../services/login/login.service";
 import { Router } from '@angular/router';
+import {SessionService} from "../../../services/session/session.service";
 
 @Component({
   selector: 'app-login',
@@ -32,6 +33,9 @@ export class LoginComponent implements OnInit{
           window.localStorage.setItem('fullName', response.user.fullName);
           window.localStorage.setItem('user', response.user.user);
           window.localStorage.setItem('token', response.token);
+          window.localStorage.setItem('role', response.user.role);
+
+          console.log(SessionService.getInstance().id)
           this.router.navigate([`/portal`]);
         } else {
           alert('Vos identifiants sont incorrectes !');

@@ -1,0 +1,21 @@
+<div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="studentsModalLabel">Liste des élèves inscrit en : {{ course?.filiere }}</h5>
+    </div>
+    <div class="modal-body">
+      <ul class="list-group" *ngIf="students.length > 0, else elseBlock">
+        <div class="mainListGroup col-12 mb-1" *ngFor="let student of students">
+          <li class="list-group-item col-6">{{ student.full_Name }}</li>
+          <button type="submit" class="btn btn-primary" (click)="addStudentInCourse(student)">Ajouter au cours</button>
+        </div>
+      </ul>
+      <ng-template #elseBlock>
+        <p>Aucun élève à ajouter au cours </p>
+      </ng-template>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Fermer</button>
+    </div>
+  </div>
+</div>

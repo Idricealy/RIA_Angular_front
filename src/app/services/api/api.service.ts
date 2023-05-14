@@ -12,7 +12,9 @@ export class Api {
 
   // GET request
   get(url: string): Observable<any> {
-    return this.http.get(this.baseUrl + url)
+    const headers = this.getHeaders();
+
+    return this.http.get(this.baseUrl + url, { headers: headers })
       .pipe(
         tap((response: any) => console.log(`GET ${url}:`, response)),
         catchError(this.handleError)
@@ -21,9 +23,7 @@ export class Api {
 
   // POST request
   post(url: string, body: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
+    const headers = this.getHeaders();
 
     return this.http.post(this.baseUrl + url, body, { headers: headers })
       .pipe(
@@ -34,9 +34,8 @@ export class Api {
 
   // PUT request
   put(url: string, body: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
+    const headers = this.getHeaders();
+
 
     return this.http.put(this.baseUrl + url, body, { headers: headers })
       .pipe(
@@ -47,7 +46,8 @@ export class Api {
 
   // DELETE request
   delete(url: string): Observable<any> {
-    return this.http.delete(this.baseUrl + url)
+    const headers = this.getHeaders();
+    return this.http.delete(this.baseUrl + url, { headers: headers })
       .pipe(
         tap((response: any) => console.log(`DELETE ${url}:`, response)),
         catchError(this.handleError)
@@ -58,5 +58,14 @@ export class Api {
   private handleError(error: any): Observable<any> {
     console.error('API error:', error);
     return error;
+  }
+
+  // Get headers with token
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
   }
 }

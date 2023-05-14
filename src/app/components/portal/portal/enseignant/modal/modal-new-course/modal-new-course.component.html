@@ -1,0 +1,32 @@
+<div >
+  <div class="modal-content">
+    <div class="modal-header" *ngIf="!edit, else elseBlock">
+      <h5 class="modal-title" id="studentsModalLabel">Ajouter un nouveau cours</h5>
+    </div>
+    <ng-template #elseBlock>
+      <div class="modal-header">
+        <h5 class="modal-title">Modifier un nouveau cours</h5>
+      </div>
+      <h5 class="modal-title"></h5>
+    </ng-template>
+    <div class="modal-body">
+      <form (ngSubmit)="!edit ? onSubmit() : onEdit()">
+        <div class="form-group">
+          <label for="nom">Nom du cours</label>
+          <input type="text" class="form-control" name="nom" id="nom" [(ngModel)]="nom" required>
+        </div>
+        <div class="form-group" *ngIf="!edit">
+          <label for="nom_ue">Nom unité d'enseignement</label>
+          <input type="text" class="form-control" id="nom_ue" name="nom_ue" [(ngModel)]="nom_ue" required>
+        </div>
+        <button type="submit" class="btn btn-primary" *ngIf="!edit, else elseBlockBtn">Ajouter un nouveau cours</button>
+        <ng-template #elseBlockBtn>
+          <button type="submit" class="btn btn-primary">Modifier un nouveau cours</button>
+        </ng-template>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Fermer</button>
+    </div>
+  </div>
+</div>

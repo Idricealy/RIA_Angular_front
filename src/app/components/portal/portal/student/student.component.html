@@ -1,1 +1,25 @@
-<p>student works!</p>
+<div class="main">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse flex-row justify-content-between" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active" (click)="onClick('cours')">
+          <a class="nav-link">Consultation des notes</a>
+        </li>
+        <li class="nav-item" (click)="onClick('edt')">
+          <a class="nav-link">Emploi du temps</a>
+        </li>
+      </ul>
+      <app-logout />
+    </div>
+  </nav>
+
+  <h1>Espace étudiant de {{userName}}</h1>
+
+  <div *ngIf="selectedTab === 'cours'">
+    <app-cours-student></app-cours-student>
+  </div>
+
+  <div *ngIf="selectedTab === 'edt'">
+    <app-edt></app-edt>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="studentsModalLabel">Liste des élèves</h5>
+    </div>
+    <div class="modal-body">
+      <ul class="list-group" *ngIf="students.length > 0, else elseBlock">
+        <div class="mainListGroup col-12" *ngFor="let student of students">
+          <li class="list-group-item col-6">{{ student.fullName }}</li>
+          <form (ngSubmit)="addNoteToStudent(student)">
+            <input type="number" class="form-control" name="nom" id="nom" [(ngModel)]="studentNotes[student.id]" required min="0" max="20">
+            <button type="submit" class="btn btn-primary">Ajouter une note</button>
+          </form>
+        </div>
+      </ul>
+      <ng-template #elseBlock>
+        <p>Aucun élève est inscrit à ce cours </p>
+      </ng-template>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Fermer</button>
+    </div>
+  </div>
+</div>

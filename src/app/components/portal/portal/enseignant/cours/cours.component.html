@@ -1,1 +1,53 @@
-<p>cours works!</p>
+<h2>Cours</h2>
+<hr>
+
+<button
+    type="button"
+    class="btn btn-secondary"
+    (click)="addNewCourse()">
+  Créer un nouveau cours
+</button>
+
+<div id="accordion">
+  <div class="card"  *ngFor="let course of courses">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <span>&#x2794;</span>
+        <button class="btn btn-link"
+                (click)="course.isCollapsed = !course.isCollapsed"
+                aria-expanded="false"
+                aria-controls="collapseOne"
+        >
+          Filière : {{ course.filiere }} - Cours : {{ course.nom_cours }}
+        </button>
+        <i class="bi bi-pen" (click)="onEdit(course)"></i>
+        <i class="bi bi-x-circle" (click)="onDelete(course)" ></i>
+      </h5>
+    </div>
+
+    <div id="{{course.id_cours}}" [ngbCollapse]="course.isCollapsed" aria-labelledby="headingOne" class="collapse" [@collapseAnimation]="course.isCollapsed ? 'collapsed' : 'expanded'">
+      <div class="card-body">
+        <div class="card-btn">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="showStudent(course)">
+              Listes des élèves
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary pad"
+            (click)="showAddStudentInCourse(course)">
+              Ajouter un élève
+          </button>
+        </div>
+
+        <div class="mainCourseCard">
+          <p>Unité d'enseignement : {{ course.unite_enseignement }}</p>
+          <p>Niveau : {{ course.niveau }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
